@@ -15,8 +15,8 @@ module FN
         FN::Node::Base("invert", 
               :x  => block["x"], 
               :y  => block["y"],
-              :x2 => block["x"].to_f + (block["boxWidth"] || block["width"]).to_f,
-              :y2 => block["y"].to_f + (block["boxHeight"] || block["height"]).to_f
+              :x2 => block["x"].to_f + block["width"].to_f,
+              :y2 => block["y"].to_f + block["height"].to_f
             ).extend(Invert)
       end
       

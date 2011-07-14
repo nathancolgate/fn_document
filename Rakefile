@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "fn_document"
   gem.homepage = "http://github.com/nathancolgate/fn_document"
   gem.license = "MIT"
-  gem.summary = "Gem for handling documents within FASI AMS"
-  gem.description = "Gem for handling documents within FASI AMS"
+  gem.summary = "Gem for reading/writing/printing fn documents"
+  gem.description = "This handles complex document creation from XML for the FASI AMS system."
   gem.email = "nathancolgate@gmail.com"
   gem.authors = ["Nathan Colgate Clark","Kyle Maxwell"]
   # dependencies defined in Gemfile

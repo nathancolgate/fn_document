@@ -2,6 +2,9 @@ source "http://rubygems.org"
 # Add dependencies required to use your gem here.
 # Example:
 #   gem "activesupport", ">= 2.3.5"
+gem "libxslt-ruby", "= 0.9.2"
+gem "libxml-ruby", "= 1.1.3"
+gem "mocha"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

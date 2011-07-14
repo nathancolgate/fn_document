@@ -1,8 +1,8 @@
-require_dependency File.dirname(__FILE__) + '/util'
-require_dependency File.dirname(__FILE__) + '/resource'
-require_dependency File.dirname(__FILE__) + '/block'
-require_dependency File.dirname(__FILE__) + '/pdf/writer'
-require_dependency File.dirname(__FILE__) + '/swf/writer'
+require File.dirname(__FILE__) + '/util'
+require File.dirname(__FILE__) + '/resource'
+require File.dirname(__FILE__) + '/block'
+require File.dirname(__FILE__) + '/pdf/writer'
+require File.dirname(__FILE__) + '/swf/writer'
 
 XML.default_keep_blanks = false
 

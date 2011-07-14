@@ -4,9 +4,6 @@ module FN
   module PDF
     module Node
       def FitImage(image, x, y, opts = {})
-        if opts.delete(:inverted)
-          opts[:orientate] = "south"
-        end
         FN::Node::Base("fit_image", opts.merge(:image => image, :x => x, :y => y)).extend(FitImage)
       end
       
@@ -19,7 +16,8 @@ module FN
           img = struct[h.delete("image")]
           x = h.delete("x").to_i
           y = h.delete("y").to_i
-          h["scale"] = 0.99 # if h["scale"] == "1.0"  
+          h["scale"] = 0.99 # if h["scale"] == "1.0"
+            
           struct.fit_image(img, x, y, h)
         end
       end

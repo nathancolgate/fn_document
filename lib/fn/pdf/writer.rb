@@ -3,12 +3,13 @@ require "PDFlib"
 require "RMagick"
 require "tempfile"
 Dir[File.dirname(__FILE__) + "/node/*.rb"].each do |f|
-  require_dependency f.sub(/\.rb$/, '')
+  require f.sub(/\.rb$/, '')
 end
 module FN
   module PDF
     class WriterError < RuntimeError; end
     class Writer
+      
       include Node
       SPACE = /[\s_]+/
       
@@ -37,10 +38,7 @@ module FN
       
       def translate(doc, options = {})
         raise "Not an FN Document" unless doc.is_a?(FN::Document)
-        @logger = Logger.new("#{RAILS_ROOT}/log/pdf_writer_logs/#{Time.now.strftime('pdf_writer_log_%Y_%m_%d')}.log")
         
-        
-        debug         = options[:debug]
         file          = options[:save_as]
         bkg           = options[:background]
         pdf_version   = options[:pdf_version] ||
@@ -57,29 +55,19 @@ module FN
         
         context = FN::Node::Context.new
         
-        # @logger.info "===== Setting Parameters ====="
         context.add SetParameter("license", license)
         context.add SetParameter("resourcefile", resource_file)
         context.add SetParameter("hypertextencoding", self.class.encoding)
         context.add SetParameter("textformat", textformat)
         
-        if bkg
-          # @logger.info "===== This Document Has a Background ====="
-          context << OpenPdi(bkg, assigns = "pdi")      
-        end
-        
-        # @logger.info "===== Uh... Begin Document ====="
+        context << OpenPdi(bkg, assigns = "pdi")      if bkg
         context << BeginDocument(file, pdf_version)
-        
-        # @logger.info "===== Setting A Forgotten Parameter ====="
         context.add SetParameter("topdown", true)
         
-        # @logger.info "===== Adding #{doc.fonts.length} Fonts ====="
         doc.fonts do |name|
           LoadFont.add_all_variants_to context, name
         end
         
-        # @logger.info "===== Adding #{doc.textflows.length} Text Flows ====="
         flows_by_name = {}
         doc.textflows.each do |flow|
           ctf = CreateTextflow(flow)
@@ -87,34 +75,23 @@ module FN
           context.add ctf
         end
         
-        
-        # @logger.info "===== Adding #{doc.pages.length} Pages ====="
-        doc.pages.each_with_index do |page,index|
+        doc.pages.each do |page|
           context.retain_after do
-            # @logger.info "Page #{index+1}:"
-            # @logger.info "BeginPageExt(:width => #{page["width"]}, :height => #{page["height"]}, :number => #{page["number"]})"
             context << BeginPageExt(page["width"], page["height"], page["number"])
             if bkg
-              # @logger.info "This Document Has Background"
-              # @logger.info "OpenPdiPage(:pdi_var => \"{pdi}\", :page_number => #{page["number"]}, :page_var => \"page\")"
               context <<  OpenPdiPage("{pdi}", page["number"], assigns = "page" )
-              # @logger.info "FitPdiPage(:var => \"{page}\")"
               context.add FitPdiPage("{page}")
             elsif page["background"]
-              # @logger.info "Page #{index+1}: This Document does NOT have a Background, but the page does"
               bkg_image = doc.resource(page["background"]).path_from(root)
               context.add LoadImage(bkg_image, "tmp")
               context.add FitImage("{tmp}", 0, page["height"], 
                                        :fitmethod => :meet, 
                                        :boxsize => [page["width"], page["height"]])
-            else
-              # @logger.info "Page #{index+1}: Does not have a background at all"
             end
             context.add(Watermark(watermark)) if watermark
           end
         end
         
-        # @logger.info "===== Adding #{doc.text_blocks.length} Text Blocks ====="
         doc.text_blocks.each do |block|
           flow = CreateTextflow(block)
           
@@ -135,10 +112,7 @@ module FN
           end
         end
         
-        # @logger.info "===== Adding #{doc.photo_blocks.length} Photo Blocks ====="
         doc.photo_blocks.each do |block|
-          # require "ruby-debug"
-          # debugger
           image = nil
           begin
             context.inject_at_page(block.page_number) do 
@@ -146,9 +120,9 @@ module FN
               tmp = Magick::Image::read(image).first
               dims = [tmp.columns.to_f, tmp.rows.to_f]
               x, y, width, height = calculate(block, dims)
-              fi = FitImage("{tmp}", x, y, :fitmethod => "meet", :boxsize => [width, height], :inverted => block["flip"] == "yes")
               context.add LoadImage(image, "tmp")
-              context.add(fi)
+              context.add FitImage("{tmp}", x, y, :fitmethod => "meet",
+                                       :boxsize => [width, height])
             end
           rescue Magick::ImageMagickError => e
             STDERR.puts e.message
@@ -157,22 +131,10 @@ module FN
           end
         end
         
-        # @logger.info "===== Closing #{doc.pages.length} Pages ====="
         doc.pages.each do |page|
           context.add EndPageExt(page["number"])
         end
         
-        
-        # @logger.info "====================================================================="
-        # @logger.info "===== Somewhere after this point, the major churning begins     ====="
-        # @logger.info "===== And starts looping through all the context things we just ====="
-        # @logger.info "===== added and tries to execute them all                       ====="
-        # @logger.info "====================================================================="
-        
-        # @logger.info "================================== doc.xml_to_s ================================="
-        # @logger.info doc.xml_to_s
-        # @logger.info "================================== context.doc.to_s ============================="
-        # @logger.info context.doc.to_s
         return context.doc
       end
       

@@ -58,7 +58,7 @@ module FN
           attrs = options.dup
           attrs["leftindent"] = (attrs["blockindent"].to_f + attrs["leftmargin"].to_f).to_i
           attrs["totalleading"] = (attrs["size"].to_f + attrs["leading"].to_f).to_i
-          # logger.warn attrs.inspect
+          # puts attrs.inspect
           attrs["formatted_color"] = format_color(attrs["color"])
           attrs["formatted_face"] = format_face(attrs)
           %(<encoding=unicode 
@@ -106,8 +106,6 @@ module FN
             when "i"; options["italic"] = true
             when "u"; options["underline"] = true
             when "li"; buffer << "&bull;&nbsp;"
-            when "p";  
-              options["align"]  = node["ALIGN"] if node["ALIGN"]
             when "font";
               options["size"]   = node["size"]  if node["size"]
               options["face"]   = node["face"]  if node["face"]
@@ -121,8 +119,7 @@ module FN
             node.children.each{|c| format(c, buffer, options)}
             
             case node.name.downcase
-            when "p", "li"; 
-              buffer << "<nextparagraph>"  
+            when "p", "li"; buffer << "<nextparagraph>"
             end
           else
             raise "unhandled node type"

@@ -13,26 +13,23 @@ module FN
         self["{#{node[:assigns]}}"] = value
       end
       
-      def method_missing(*args, &block)
-        @logger = Logger.new("#{RAILS_ROOT}/log/pdf_writer_logs/#{Time.now.strftime('pdf_writer_log_%Y_%m_%d')}.log")
-        # @logger.info("This is what args looks like when we first get it: #{a.inspect}")
-        args.map! do |elem|
+      def method_missing(*a, &b)
+        a.map! do |elem|
           case elem
           when Hash:
-            elem.inject([]) {|m, (key, value)| 
-              m << "#{key}={#{value}}"
+            elem.inject([]) {|m, (k, v)| 
+              m << "#{k}={#{v}}"
             }.join(" ")
           else
             elem
           end
         end
         begin
-          # @logger.info("Calling #{args.inspect}, this struct: #{self.inspect}")
-          @pdf.send(*args, &block)
-        rescue Exception => error
-          # @logger.info("FAILURE FAILURE FAILURE FAILURE FAILURE FAILURE")
-          # @logger.info("Exception: #{error}")
-          raise error
+          # puts "command: #{a.inspect}"        if @debug
+          @pdf.send(*a, &b)
+        rescue Exception => e
+          STDERR.puts("tried calling #{a.shift} with args: #{a.inspect}, state: #{inspect}")
+          raise e
         end
       end
     end

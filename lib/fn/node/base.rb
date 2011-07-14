@@ -18,13 +18,7 @@ module FN
       end
       
       def has_no_children
-        @logger = Logger.new("#{RAILS_ROOT}/log/pdf_writer_logs/#{Time.now.strftime('pdf_writer_log_%Y_%m_%d')}.log")
-        if children.any?{|c| !c.cdata?}
-          # @logger.info "HAS NO CHILDREN "*88
-          raise "should have no children" 
-        else
-          # @logger.info "This should not have any children and it does not"
-        end
+        raise "should have no children" if children.any?{|c| !c.cdata?}
       end
       
       def visit_children(struct)
