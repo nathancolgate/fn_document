@@ -35,3 +35,5 @@
   -- support for manual resource tagging
 0.9.2 - August 5, 2009
   -- Changed libxml-ruby dependency to 0.9.8.
+0.9.3 - July 14, 2011
+  -- Trying to make this thing back into a functional gem for easier installation.
