@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <element name="document">
+      <attribute name="version">
+        <data type="integer"/>
+      </attribute>
+      <element name="resources">
+        <oneOrMore>
+          <element name="resource">
+            <attribute name="id" />
+            <attribute name="type">
+              <data type="NCName"/>
+            </attribute>
+            <text/>
+          </element>
+        </oneOrMore>
+      </element>
+      <element name="menu">
+        <empty/>
+      </element>
+      <element name="pages">
+        <oneOrMore>
+          <element name="page">
+            <attribute name="background">
+              <data type="NCName"/>
+            </attribute>
+            <attribute name="height">
+              <data type="integer"/>
+            </attribute>
+            <attribute name="hotspot"/>
+            <attribute name="number">
+              <data type="integer"/>
+            </attribute>
+            <attribute name="width">
+              <data type="integer"/>
+            </attribute>
+            <zeroOrMore>
+              <element name="slice">
+                <attribute name="height">
+                  <data type="integer"/>
+                </attribute>
+                <attribute name="index">
+                  <data type="integer"/>
+                </attribute>
+                <attribute name="width">
+                  <data type="integer"/>
+                </attribute>
+                <attribute name="x">
+                  <data type="integer"/>
+                </attribute>
+                <attribute name="y">
+                  <data type="integer"/>
+                </attribute>
+              </element>
+            </zeroOrMore>
+            <oneOrMore>
+              <element name="block">
+                <optional>
+                  <attribute name="align">
+                    <data type="NCName"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="boxHeight">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="boxWidth">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="boxX">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="boxY">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="height">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="id">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="index">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="src">
+                    <data type="NCName"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="text">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <attribute name="type">
+                  <data type="NCName"/>
+                </attribute>
+                <attribute name="width">
+                  <data type="integer"/>
+                </attribute>
+                <optional>
+                  <attribute name="x">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="y">
+                    <data type="integer"/>
+                  </attribute>
+                </optional>
+                <optional>
+                  <attribute name="multipage" />
+                </optional>
+              </element>
+            </oneOrMore>
+          </element>
+        </oneOrMore>
+      </element>
+      <element name="texts">
+        <oneOrMore>
+          <choice>
+            <text/>
+            <element name="text">
+              <attribute name="id">
+                <data type="integer"/>
+              </attribute>
+              <oneOrMore>
+                <element name="p">
+                  <attribute name="align">
+                    <data type="NCName"/>
+                  </attribute>
+                  <choice>
+                    <ref name="font"/>
+                    <element name="i">
+                      <ref name="font"/>
+                    </element>
+                  </choice>
+                </element>
+              </oneOrMore>
+            </element>
+          </choice>
+        </oneOrMore>
+      </element>
+    </element>
+  </start>
+  <define name="font">
+    <element name="font">
+      <attribute name="color"/>
+      <attribute name="face"/>
+      <attribute name="size">
+        <data type="integer"/>
+      </attribute>
+      <element name="textformat">
+        <text/>
+      </element>
+    </element>
+  </define>
+</grammar>

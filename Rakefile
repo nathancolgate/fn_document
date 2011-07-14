@@ -17,10 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.name = "fn_document"
   gem.homepage = "http://github.com/nathancolgate/fn_document"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Gem for handling documents within FASI AMS"
+  gem.description = "Gem for handling documents within FASI AMS"
   gem.email = "nathancolgate@gmail.com"
-  gem.authors = ["Nathan Colgate Clark"]
+  gem.authors = ["Nathan Colgate Clark","Kyle Maxwell"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
