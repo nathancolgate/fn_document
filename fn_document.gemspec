@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "fn_document.gemspec",
     "lib/fn/block.rb",
     "lib/fn/document.rb",
     "lib/fn/migrate.xslt",
