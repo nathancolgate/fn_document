@@ -5,6 +5,7 @@ source "http://rubygems.org"
 gem "libxslt-ruby", "= 0.9.2"
 gem "libxml-ruby", "= 1.1.3"
 gem "mocha"
+gem 'rmagick'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

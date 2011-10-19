@@ -37,3 +37,5 @@
   -- Changed libxml-ruby dependency to 0.9.8.
 0.9.3 - July 14, 2011
   -- Trying to make this thing back into a functional gem for easier installation.
+0.9.4 - October 19, 2011
+  -- Switch from STDERR to $stderr in an effort to see debugging on struct.rb:31

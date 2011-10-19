@@ -1,7 +1,7 @@
 require "rubygems"
 require "PDFlib"
 require "RMagick"
-require "tempfile"
+require "tempfile" # Built into ruby
 Dir[File.dirname(__FILE__) + "/node/*.rb"].each do |f|
   require f.sub(/\.rb$/, '')
 end
@@ -125,8 +125,8 @@ module FN
                                        :boxsize => [width, height])
             end
           rescue Magick::ImageMagickError => e
-            STDERR.puts e.message
-            STDERR.puts e.backtrace.join("\n")
+            $stderr.puts e.message
+            $stderr.puts e.backtrace.join("\n")
             raise WriterError.new("Couldn't load '#{block.src}', given by #{doc.resource(block.src).node}")
           end
         end

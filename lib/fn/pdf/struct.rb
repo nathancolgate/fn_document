@@ -28,7 +28,7 @@ module FN
           # puts "command: #{a.inspect}"        if @debug
           @pdf.send(*a, &b)
         rescue Exception => e
-          STDERR.puts("tried calling #{a.shift} with args: #{a.inspect}, state: #{inspect}")
+          $stderr.puts("tried calling #{a.shift} with args: #{a.inspect}, state: #{inspect}")
           raise e
         end
       end
