@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fn_document}
-  s.version = "0.9.3"
+  s.version = "0.9.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nathan Colgate Clark", "Kyle Maxwell"]
-  s.date = %q{2011-07-14}
+  s.date = %q{2011-10-19}
   s.description = %q{This handles complex document creation from XML for the FASI AMS system.}
   s.email = %q{nathancolgate@gmail.com}
   s.extra_rdoc_files = [
@@ -69,17 +69,17 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/nathancolgate/fn_document}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.6.2}
   s.summary = %q{Gem for reading/writing/printing fn documents}
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<libxslt-ruby>, ["= 0.9.2"])
       s.add_runtime_dependency(%q<libxml-ruby>, ["= 1.1.3"])
       s.add_runtime_dependency(%q<mocha>, [">= 0"])
+      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -88,6 +88,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<libxslt-ruby>, ["= 0.9.2"])
       s.add_dependency(%q<libxml-ruby>, ["= 1.1.3"])
       s.add_dependency(%q<mocha>, [">= 0"])
+      s.add_dependency(%q<rmagick>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -97,6 +98,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<libxslt-ruby>, ["= 0.9.2"])
     s.add_dependency(%q<libxml-ruby>, ["= 1.1.3"])
     s.add_dependency(%q<mocha>, [">= 0"])
+    s.add_dependency(%q<rmagick>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
