@@ -27,9 +27,18 @@ module FN
       end
       
       def write_xml(xml, file)
-        xml.root.extend(FN::Node::Root)
-        xml.root.visit(FN::PDF::Struct.new)
-        return file
+        begin
+          xml.root.extend(FN::Node::Root)
+          xml.root.visit(FN::PDF::Struct.new)
+          return file
+        rescue Exception => e
+          $stderr.puts "="*88
+          $stderr.puts "Tried to write_xml but failed. Logging XML and file:"
+          $stderr.puts "xml: #{xml}"
+          $stderr.puts "file: #{file}"
+          $stderr.puts "="*88
+          raise e
+        end
       end
       
       def titlecase(str)
