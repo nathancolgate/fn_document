@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fn_document}
-  s.version = "0.9.4"
+  s.version = "0.9.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nathan Colgate Clark", "Kyle Maxwell"]
-  s.date = %q{2011-10-19}
+  s.date = %q{2011-10-20}
   s.description = %q{This handles complex document creation from XML for the FASI AMS system.}
   s.email = %q{nathancolgate@gmail.com}
   s.extra_rdoc_files = [
