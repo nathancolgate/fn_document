@@ -49,7 +49,7 @@ module FN
           child.to_s.gsub("<![CDATA[", "").gsub("]]>", "")
         end
       
-        def visit(struct)
+        def visit(struct, debug = false)
           tf = struct.create_textflow(inner_text, "")
           struct.assigns self, tf
         end

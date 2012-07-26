@@ -23,11 +23,11 @@ module FN
       module Invert 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           struct.save
           struct.translate self["x"].to_f + self["x2"].to_f, self["y"].to_f + self["y2"].to_f
           struct.rotate 180
-          visit_children struct
+          visit_children(struct, debug)
           struct.restore
         end
       end

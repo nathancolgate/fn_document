@@ -13,19 +13,29 @@ module FN
       CURRENT_PAGE_WIDTH  = "__current_page_width"
       CURRENT_PAGE_HEIGHT = "__current_page_height"
     
-      def visit(struct)
-        visit_children(struct)
+      def visit(struct, debug = false)
+        visit_children(struct, debug)
       end
       
       def has_no_children
         raise "should have no children" if children.any?{|c| !c.cdata?}
       end
       
-      def visit_children(struct)
+      def visit_children(struct, debug = false)
+        if debug
+          puts "="*88
+          puts "Visiting Children"
+          puts "Struct"
+          puts struct.inspect  
+          puts "-"*88
+          puts "Children"
+          puts children.inspect
+          puts "="*88
+        end
         children.each do |c| 
           if c.element?
             mixin(c)
-            c.visit(struct)
+            c.visit(struct, debug)
           end
         end
         return struct

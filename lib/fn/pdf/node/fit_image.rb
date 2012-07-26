@@ -10,7 +10,7 @@ module FN
       module FitImage 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           h = attributes.to_h
           img = struct[h.delete("image")]

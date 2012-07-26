@@ -9,7 +9,7 @@ module FN
       module Image 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           struct << %[.jpeg #{self[:name]} "#{self[:file]}"]
         end

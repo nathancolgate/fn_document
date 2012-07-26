@@ -9,13 +9,13 @@ module FN
       module Flash 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           w = self[:width]
           h = self[:height]
           size = "#{w}x#{h}"
           struct.<< %[.flash bbox="#{size}" compress version=6] do
             struct.<< %[.box bkg width=#{w} height=#{h} color=white fill]
-            visit_children struct
+            visit_children(struct, debug)
           end
         end
       end

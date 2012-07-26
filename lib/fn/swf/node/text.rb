@@ -27,7 +27,7 @@ module FN
           text.gsub("\\", "\\\\").gsub("\"", "\\\"").gsub(SPACE, " ")
         end
               
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           name = "#{self[:text]}_#{self[:index]}"
           x = self[:x]

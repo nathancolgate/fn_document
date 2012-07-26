@@ -15,7 +15,7 @@ module FN
       module FitTextflow 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           struct.fit_textflow struct[self["flow"]], 
               self["x"].to_f,  self["y"].to_f, 

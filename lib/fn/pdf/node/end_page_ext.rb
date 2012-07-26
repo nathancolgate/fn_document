@@ -11,7 +11,7 @@ module FN
       module EndPageExt 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           struct.resume_page(attributes.to_h)
           struct.end_page_ext("")

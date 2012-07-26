@@ -1,28 +1,44 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (3.2.7)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
     git (1.2.5)
-    jeweler (1.6.4)
+    i18n (0.6.0)
+    jeweler (1.8.4)
       bundler (~> 1.0)
       git (>= 1.2.5)
       rake
-    libxml-ruby (1.1.3)
-    libxslt-ruby (0.9.2)
-      libxml-ruby (>= 0.9.4)
-    mocha (0.9.12)
-    rake (0.9.2)
-    rcov (0.9.9)
+      rdoc
+    json (1.7.4)
+    libxml-ruby (2.3.3)
+    libxslt-ruby (1.0.9)
+      libxml-ruby (>= 2.2.2)
+    metaclass (0.0.1)
+    mocha (0.12.1)
+      metaclass (~> 0.0.1)
+    multi_json (1.3.6)
+    rake (0.9.2.2)
+    rcov (1.0.0)
+    rdoc (3.12)
+      json (~> 1.4)
     rmagick (2.13.1)
-    shoulda (2.11.3)
+    shoulda (3.1.1)
+      shoulda-context (~> 1.0)
+      shoulda-matchers (~> 1.2)
+    shoulda-context (1.0.0)
+    shoulda-matchers (1.2.0)
+      activesupport (>= 3.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.0.0)
-  jeweler (~> 1.6.4)
-  libxml-ruby (= 1.1.3)
-  libxslt-ruby (= 0.9.2)
+  bundler
+  jeweler
+  libxml-ruby
+  libxslt-ruby
   mocha
   rcov
   rmagick

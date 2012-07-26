@@ -21,24 +21,15 @@ module FN
         @encoding
       end
       
-      def write(doc, options = {})
+      def write(doc, options = {}, debug = false)
         options[:save_as] ||= (tmp = Tempfile.new("pdf"); tmp.close; tmp.path)
-        write_xml translate(doc, options), options[:save_as]
+        write_xml translate(doc, options), options[:save_as], debug
       end
       
-      def write_xml(xml, file)
-        begin
-          xml.root.extend(FN::Node::Root)
-          xml.root.visit(FN::PDF::Struct.new)
-          return file
-        rescue Exception => e
-          $stderr.puts "="*88
-          $stderr.puts "Tried to write_xml but failed. Logging XML and file:"
-          $stderr.puts "xml: #{xml}"
-          $stderr.puts "file: #{file}"
-          $stderr.puts "="*88
-          raise e
-        end
+      def write_xml(xml, file, debug = false)
+        xml.root.extend(FN::Node::Root)
+        xml.root.visit(FN::PDF::Struct.new(debug),debug)
+        return file
       end
       
       def titlecase(str)

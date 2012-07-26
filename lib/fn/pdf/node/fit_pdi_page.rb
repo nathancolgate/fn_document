@@ -10,7 +10,7 @@ module FN
       module FitPdiPage 
         include FN::Node::Base
         
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           struct.fit_pdi_page(struct[self[:page]], 0, struct[CURRENT_PAGE_HEIGHT], "")
         end

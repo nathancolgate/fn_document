@@ -11,7 +11,7 @@ module FN
       module Watermark
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           w = struct[CURRENT_PAGE_WIDTH]
           h = struct[CURRENT_PAGE_HEIGHT]

@@ -9,7 +9,7 @@ module FN
       module Break 
         include FN::Node::Base
         
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           struct.break
         end

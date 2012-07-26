@@ -16,7 +16,7 @@ module FN
       
         # <block type="photo" src="logo" width="162" boxX="30" boxY="40" 
         # boxWidth="185" boxHeight="99" align="middlecenter"/>
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           
           src   = self[:src]

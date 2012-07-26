@@ -11,9 +11,9 @@ module FN
       module BeginDocument 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           struct.begin_document(self[:file], :compatibility => self[:compatibility])
-          visit_children(struct)
+          visit_children(struct, debug )
           struct.end_document("")
         end
       end

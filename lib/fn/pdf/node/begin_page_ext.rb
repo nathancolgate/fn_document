@@ -11,11 +11,11 @@ module FN
       module BeginPageExt 
         include FN::Node::Base
         
-        def visit(struct)
+        def visit(struct, debug = false)
           struct.begin_page_ext(self[:width].to_i, self[:height].to_i, "")
           struct[CURRENT_PAGE_WIDTH]  = self[:width].to_i
           struct[CURRENT_PAGE_HEIGHT] = self[:height].to_i
-          visit_children struct
+          visit_children(struct, debug)
           struct.suspend_page("")
         end
       end

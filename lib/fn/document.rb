@@ -92,10 +92,10 @@ module FN
       #end
     end
     
-    def to_pdf(options = {})
+    def to_pdf(options = {}, debug = false)
       update_resources(options)
       @pdf ||= PDF::Writer.new
-      @pdf.write(self, options)      
+      @pdf.write(self, options, debug)      
     end
         
     def to_swf(options = {})

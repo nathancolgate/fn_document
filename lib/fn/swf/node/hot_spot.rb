@@ -12,7 +12,7 @@ module FN
       module HotSpot 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           
           x = self[:x]

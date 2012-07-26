@@ -10,10 +10,13 @@ module FN
       module OpenPdi 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
+          if debug
+            puts "self[:file]: #{self[:file]}"
+          end
           pdi = struct.open_pdi(self[:file], "", 0)
           struct.assigns(self, pdi)
-          visit_children struct
+          visit_children(struct, debug)
           struct.close_pdi(pdi)
         end
       end

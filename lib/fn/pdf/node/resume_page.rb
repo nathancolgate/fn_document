@@ -10,9 +10,9 @@ module FN
       module ResumePage 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           struct.resume_page(attributes.to_h)
-          visit_children(struct)
+          visit_children(struct, debug)
           struct.suspend_page("")
         end
       end

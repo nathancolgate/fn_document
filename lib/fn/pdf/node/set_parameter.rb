@@ -11,7 +11,7 @@ module FN
       module SetParameter 
         include FN::Node::Base
       
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           struct[self[:key]] = self[:value]
           struct.set_parameter(self[:key], self[:value])

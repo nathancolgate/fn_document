@@ -36,8 +36,8 @@ module FN
         @current = old
       end
       
-      def visit(struct)
-        root.visit(struct)
+      def visit(struct, debug = false)
+        root.visit(struct,debug)
         struct
       end
       

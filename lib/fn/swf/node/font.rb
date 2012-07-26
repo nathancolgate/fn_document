@@ -14,7 +14,7 @@ module FN
           # no-op, since at present, we aren't using custom fonts?!
         end
       
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           struct << %[.font #{self[:name]} "#{self[:file]}"]
         end

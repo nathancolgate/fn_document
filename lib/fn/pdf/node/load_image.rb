@@ -10,7 +10,7 @@ module FN
       module LoadImage 
         include FN::Node::Base
         
-        def visit(struct)
+        def visit(struct, debug = false)
           has_no_children
           img = struct.load_image("auto", self[:file], "")
           struct.assigns self, img

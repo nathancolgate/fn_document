@@ -10,14 +10,14 @@ module FN
       module Page 
         include FN::Node::Base
         
-        def visit(struct)
+        def visit(struct, debug = false)
           n = self[:number] 
           bkg = self[:bkg]
           struct << ".frame #{n}"
           struct.<< ".sprite page#{n}" do
             struct << ".put bkg 0 0"
             struct << ".put #{bkg} x=0 y=0"
-            visit_children(struct)
+            visit_children(struct, debug)
           end
           struct << ".put page#{n} 0 00"
           struct.<< ".action:" do
