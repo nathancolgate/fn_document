@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{fn_document}
-  s.version = "0.9.6"
+  s.name = "fn_document"
+  s.version = "0.9.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nathan Colgate Clark", "Kyle Maxwell"]
-  s.date = %q{2011-10-20}
-  s.description = %q{This handles complex document creation from XML for the FASI AMS system.}
-  s.email = %q{nathancolgate@gmail.com}
+  s.date = "2012-07-26"
+  s.description = "This handles complex document creation from XML for the FASI AMS system."
+  s.email = "nathancolgate@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -63,45 +63,49 @@ Gem::Specification.new do |s|
     "lib/fn/util.rb",
     "lib/fn/validation.rng",
     "lib/fn_document.rb",
+    "test/assets/logo.jpg",
+    "test/assets/pdf_background.pdf",
+    "test/assets/pdf_background_2.pdf",
     "test/helper.rb",
+    "test/nathans_test.rb",
     "test/test_fn_document.rb"
   ]
-  s.homepage = %q{http://github.com/nathancolgate/fn_document}
+  s.homepage = "http://github.com/nathancolgate/fn_document"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Gem for reading/writing/printing fn documents}
+  s.rubygems_version = "1.8.24"
+  s.summary = "Gem for reading/writing/printing fn documents"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<libxslt-ruby>, ["= 0.9.2"])
-      s.add_runtime_dependency(%q<libxml-ruby>, ["= 1.1.3"])
+      s.add_runtime_dependency(%q<libxslt-ruby>, [">= 0"])
+      s.add_runtime_dependency(%q<libxml-ruby>, [">= 0"])
       s.add_runtime_dependency(%q<mocha>, [">= 0"])
       s.add_runtime_dependency(%q<rmagick>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
+      s.add_development_dependency(%q<bundler>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
-      s.add_dependency(%q<libxslt-ruby>, ["= 0.9.2"])
-      s.add_dependency(%q<libxml-ruby>, ["= 1.1.3"])
+      s.add_dependency(%q<libxslt-ruby>, [">= 0"])
+      s.add_dependency(%q<libxml-ruby>, [">= 0"])
       s.add_dependency(%q<mocha>, [">= 0"])
       s.add_dependency(%q<rmagick>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
+      s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rcov>, [">= 0"])
     end
   else
-    s.add_dependency(%q<libxslt-ruby>, ["= 0.9.2"])
-    s.add_dependency(%q<libxml-ruby>, ["= 1.1.3"])
+    s.add_dependency(%q<libxslt-ruby>, [">= 0"])
+    s.add_dependency(%q<libxml-ruby>, [">= 0"])
     s.add_dependency(%q<mocha>, [">= 0"])
     s.add_dependency(%q<rmagick>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
+    s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rcov>, [">= 0"])
   end
 end
