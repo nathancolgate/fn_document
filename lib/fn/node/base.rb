@@ -61,7 +61,8 @@ module FN
       
       def value(v)
         case v
-        when Array: v.map{|e| value(e)}.join(" ")
+        when Array
+          v.map{|e| value(e)}.join(" ")
         else
           v.to_s
         end
