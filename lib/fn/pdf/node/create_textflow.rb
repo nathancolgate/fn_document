@@ -101,12 +101,17 @@ module FN
             buffer << node.to_s.gsub(NL, '') 
           elsif node.element?
             case node.name.downcase
-            when "br"; buffer << "<nextline>"
-            when "b"; options["bold"] = true
-            when "i"; options["italic"] = true
-            when "u"; options["underline"] = true
-            when "li"; buffer << "&bull;&nbsp;"
-            when "font";
+            when "br"
+              buffer << "<nextline>"
+            when "b"
+              options["bold"] = true
+            when "i"
+              options["italic"] = true
+            when "u"
+              options["underline"] = true
+            when "li"
+              buffer << "&bull;&nbsp;"
+            when "font"
               options["size"]   = node["size"]  if node["size"]
               options["face"]   = node["face"]  if node["face"]
               options["color"]  = node["color"] if node["color"]
@@ -119,7 +124,8 @@ module FN
             node.children.each{|c| format(c, buffer, options)}
             
             case node.name.downcase
-            when "p", "li"; buffer << "<nextparagraph>"
+            when "p", "li"
+              buffer << "<nextparagraph>"
             end
           else
             raise "unhandled node type"

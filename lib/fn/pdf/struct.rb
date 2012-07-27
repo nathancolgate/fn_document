@@ -16,7 +16,7 @@ module FN
       def method_missing(*a, &b)
         a.map! do |elem|
           case elem
-          when Hash:
+          when Hash
             elem.inject([]) {|m, (k, v)| 
               m << "#{k}={#{v}}"
             }.join(" ")
