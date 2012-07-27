@@ -1,6 +1,8 @@
 require 'rubygems'
-gem "libxml-ruby", "=1.1.3"
-gem "libxslt-ruby", "=0.9.2"
+# gem "libxml-ruby", "=1.1.3"
+# gem "libxslt-ruby", "=0.9.2"
+gem "libxml-ruby"
+gem "libxslt-ruby"
 require 'libxml'
 require 'libxslt'
 include LibXML
