@@ -148,15 +148,21 @@ module FN
         iw, ih = dims
         ah =  aw * ih / iw
         case block["align"]
-        when /right/:   x = bx + bw - aw
-        when /center/:  x = bx + (bw - aw) / 2
-        else            x = bx
+        when /right/
+          x = bx + bw - aw
+        when /center/
+          x = bx + (bw - aw) / 2
+        else
+          x = bx
         end
         
         case block["align"]
-        when /bottom/:  y = by + bh 
-        when /middle/:  y = by + bh / 2
-        else            y = by
+        when /bottom/
+          y = by + bh 
+        when /middle/
+          y = by + bh / 2
+        else
+          y = by
         end
         
         return [x, y, aw, ah]

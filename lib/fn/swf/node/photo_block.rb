@@ -34,15 +34,21 @@ module FN
           h       = ow * scale
           
           x = case align
-          when /center/: bx + (bw - w) / 2.0;
-          when /right/:  bx + (bw - w)
-          else;          bx
+          when /center/
+            bx + (bw - w) / 2.0;
+          when /right/
+            bx + (bw - w)
+          else
+            bx
           end
           
           y = case align
-          when /middle/: by + (bh - h) / 2.0;
-          when /bottom/: by + (bh - h)
-          else;          by
+          when /middle/
+            by + (bh - h) / 2.0;
+          when /bottom/
+            by + (bh - h)
+          else
+            by
           end
             
           struct << ".put #{src} x=#{x} y=#{y} scalex=#{percent} scaley=#{percent}"
