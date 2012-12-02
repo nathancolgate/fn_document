@@ -13,5 +13,6 @@ group :development do
   gem "shoulda", ">= 0"
   gem "bundler"
   gem "jeweler"
-  gem "rcov", ">= 0"
+  # gem "rcov", ">= 0" # **** Ruby 1.9 is not supported. Please switch to simplecov ****
+  gem 'simplecov'
 end
