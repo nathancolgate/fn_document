@@ -39,19 +39,15 @@ module FN
       def translate(doc, options = {})
         raise "Not an FN Document" unless doc.is_a?(FN::Document)
         
-        file          = options[:save_as]
-        bkg           = options[:background]
-        pdf_version   = options[:pdf_version] ||
-                        1.5
-        license       = options[:license]
-        resource_file = options[:font_list] ||
-                        File.join(File.dirname(__FILE__), "pdflib.upr")
-        self.class.encoding      = options[:encoding] || 
-                        "unicode"
-        textformat    = options[:textformat] || "utf8"
-        root          = options[:resource_root] ||
-                        ""
-        watermark     = options[:watermark]
+        file                    = options[:save_as]
+        bkg                     = options[:background]
+        pdf_version             = options[:pdf_version] || 1.5
+        license                 = options[:license]
+        resource_file           = options[:font_list] || File.join(File.dirname(__FILE__), "pdflib.upr")
+        self.class.encoding     = options[:encoding] || "unicode"
+        textformat              = options[:textformat] || "utf8"
+        root                    = options[:resource_root] || ""
+        watermark               = options[:watermark]
         
         context = FN::Node::Context.new
         
