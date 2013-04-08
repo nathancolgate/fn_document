@@ -2,6 +2,7 @@ require "rubygems"
 require "PDFlib"
 require "RMagick"
 require "tempfile" # Built into ruby
+require "open-uri" # So we can download remote files
 Dir[File.dirname(__FILE__) + "/node/*.rb"].each do |f|
   require f.sub(/\.rb$/, '')
 end
@@ -112,8 +113,11 @@ module FN
           image = nil
           begin
             context.inject_at_page(block.page_number) do 
-              image = doc.resource(block.src).path_from(root)
-              tmp = Magick::Image::read(image).first
+              # image = doc.resource(block.src).path_from(root)
+              # tmp = Magick::Image::read(image).first
+              # http://stackoverflow.com/questions/7264895/rmagick-can-not-read-remote-image
+              urlimage = open(block.src)
+              tmp = Magick::Image::from_blob(urlimage.read)
               dims = [tmp.columns.to_f, tmp.rows.to_f]
               x, y, width, height = calculate(block, dims)
               context.add LoadImage(image, "tmp")
@@ -123,7 +127,7 @@ module FN
           rescue Magick::ImageMagickError => e
             $stderr.puts e.message
             $stderr.puts e.backtrace.join("\n")
-            raise WriterError.new("Couldn't load '#{block.src}', given by #{doc.resource(block.src).node}")
+            raise WriterError.new("Couldn't load remote photo '#{block.src}', given by #{doc.resource(block.src).node}")
           end
         end
         
