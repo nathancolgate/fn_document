@@ -117,7 +117,7 @@ module FN
               # tmp = Magick::Image::read(image).first
               # http://stackoverflow.com/questions/7264895/rmagick-can-not-read-remote-image
               urlimage = open(block.src)
-              tmp = Magick::Image::from_blob(urlimage.read)
+              tmp = Magick::Image::from_blob(urlimage.read).first
               dims = [tmp.columns.to_f, tmp.rows.to_f]
               x, y, width, height = calculate(block, dims)
               context.add LoadImage(image, "tmp")
